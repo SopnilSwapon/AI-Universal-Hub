@@ -1,15 +1,19 @@
-const dataLoader = async () => {
+const dataLoader = async (isLoaded) => {
     const res = await fetch(' https://openapi.programming-hero.com/api/ai/tools');
     const data = await res.json();
     const allData = data.data.tools;
-    displayData(allData)
+    displayData(allData, isLoaded)
     // console.log(data.data);
 }
-const displayData = (allData) => {
+const cartContainer = document.getElementById('card-container');
+const displayData = (allData, isLoaded) => {
+    if(allData.length > 6 && !isLoaded){
+        allData = allData.slice(0, 6)
+    }
+    cartContainer.innerHTML = '';
     allData.forEach(data =>{
-        console.log(data);
-    const cartContainer = document.getElementById('card-container');
-    const div = document.createElement('div');
+        // console.log(data.length);
+            const div = document.createElement('div');
     div.classList = `card card-compact w-96 bg-gray-400 shadow-xl`;
     div.innerHTML = `
     <figure><img src="${data.image}" alt="Shoes" /></figure>
@@ -23,12 +27,23 @@ const displayData = (allData) => {
                   <h3 class="text-[25px] font-semibold my-2">${data.name}</h3>
                   <p>Published date:${data.published_in}</p>
                   <div class="card-actions justify-end">
-                  <button class="btn btn-primary">SEE DETAILS</button>
+                  <button onclick='displayDetails()' class="btn btn-primary">SEE DETAILS</button>
                 </div>
                   </div>
                 </div>
     `;
     cartContainer.appendChild(div);
     })    
+};
+// show details information //
+const displayDetails = () =>{
+     
+//   console.log('clicked');
 }
-dataLoader();
+// show more button  function//
+const showMorebtn = document.getElementById('show-more-btn');
+function showMore () {
+    dataLoader(true);
+    showMorebtn.classList.add('hidden');
+}
+dataLoader(false);

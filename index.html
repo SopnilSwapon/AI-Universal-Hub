@@ -26,9 +26,29 @@
     <!-- card -->
     <section>
         <div id="card-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-5 mt-5">
-          
         </div>
     </section>
+    <!-- show more  -->
+    <div class="flex justify-center mt-4">
+        <button id="show-more-btn" onclick="showMore()" class="btn btn-error font-semibold text-[20px] text-white text-center ">SHOW MORE</button>
+      </div>
+    <!-- show details modal -->
+    <div>
+<!-- Open the modal using ID.showModal() method -->
+<button class="btn" onclick="details_modal.showModal()">open modal</button>
+<dialog id="details_modal" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg">Hello!</h3>
+    <p class="py-4">Press ESC key or click the button below to close</p>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+    </div>
     </main>
     <footer>
 
