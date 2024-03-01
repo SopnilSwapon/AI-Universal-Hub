@@ -12,8 +12,8 @@ const displayData = (allData, isLoaded) => {
     }
     cartContainer.innerHTML = '';
     allData.forEach(data =>{
-        // console.log(data.length);
-            const div = document.createElement('div');
+        console.log(data.id);
+     const div = document.createElement('div');
     div.classList = `card card-compact w-96 bg-gray-400 shadow-xl`;
     div.innerHTML = `
     <figure><img src="${data.image}" alt="Shoes" /></figure>
@@ -27,23 +27,28 @@ const displayData = (allData, isLoaded) => {
                   <h3 class="text-[25px] font-semibold my-2">${data.name}</h3>
                   <p>Published date:${data.published_in}</p>
                   <div class="card-actions justify-end">
-                  <button onclick='displayDetails()' class="btn btn-primary">SEE DETAILS</button>
+                  <button onclick='displayDetails("${data.id}")' class="btn btn-primary">SEE DETAILS</button>
                 </div>
                   </div>
                 </div>
     `;
     cartContainer.appendChild(div);
-    })    
+})    
 };
-// show details information //
-const displayDetails = () =>{
-     
-//   console.log('clicked');
-}
 // show more button  function//
 const showMorebtn = document.getElementById('show-more-btn');
 function showMore () {
     dataLoader(true);
     showMorebtn.classList.add('hidden');
 }
+const detailInfo = async (id) => {
+    const res = await fetch(`https://openapi.programming-hero.com/api/ai/tool/${id}`);
+    const dataId= await res.json();
+    displayDetails(dataId)
+    }
+    // show details information //
+    const displayDetails = (dataId) =>{
+        console.log(dataId.data);
+        detailInfo();
+    }
 dataLoader(false);
