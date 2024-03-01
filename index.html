@@ -7,13 +7,28 @@
     <!-- Daisy UI & Tailwind -->
 <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
 <script src="https://cdn.tailwindcss.com"></script>
+<!-- google fonts  -->
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+    .font{
+  font-family: "Work Sans", sans-serif;}
+</style>
 </head>
-<body>
+<body class="font w-[95%] mx-auto">
     <header>
-  <h1>AI Universal Hub</h1>
+  <h1 class="text-5xl font-semibold text-center mt-5">AI Universal Hub</h1>
+  <div class="flex justify-center mt-4">
+    <button class="btn btn-error font-semibold text-[20px] text-white text-center ">Sort By Date</button>
+  </div>
+
     </header>
     <main>
-    
+    <!-- card -->
+    <section>
+        <div id="card-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-5 mt-5">
+          
+        </div>
+    </section>
     </main>
     <footer>
 
